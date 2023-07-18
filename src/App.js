@@ -17,17 +17,23 @@ function App() {
   const ratingArr = [1, 2, 3, 4, 5];  
  
 
+  // function changeState(e){
+  //   let buttons = document.querySelectorAll('.circle')
+  //   buttons.forEach((button) => {
+  //     if(button.classList.contains('onclick')){
+  //       button.classList.remove('onclick')
+  //     }
+  //   })
+  //   console.log(e.target.innerHTML);
+  //   e.target.classList.add('onclick');
+  //   setSelectedRating(e.target.innerHTML);
+  // }
   function changeState(e){
-    let buttons = document.querySelectorAll('.circle')
-    buttons.forEach((button) => {
-      if(button.classList.contains('onclick')){
-        button.classList.remove('onclick')
-      }
-    })
     console.log(e.target.innerHTML);
-    e.target.classList.add('onclick');
-    setSelectedRating(e.target.innerHTML);
-  }
+    setSelectedRating(parseInt(e.target.innerHTML));
+    console.log(selectedRating);
+ }
+
 
   console.log(selectedRating); 
 
@@ -49,13 +55,22 @@ function App() {
             </p>
           </div>  
    
-          <div className='rating-container'>  
+          {/* <div className='rating-container'>  
             { ratingArr.map((item, index) => { return (   
             <div key={index} onClick={(e) => changeState(e)} className= { 'circle rating'}>{item}</div>
             )
             })
             }            
-          </div> 
+          </div>  */}
+
+          <div className='rating-container'>  
+            { ratingArr.map((item, index) => { return (
+   
+            <div key={index} onClick={(e) => changeState(e)} className= { 'circle rating' + ((index+1) === selectedRating ? ' onclick' : '')}>{index + 1}</div>
+            )
+            })
+            }            
+          </div>
           
           <div className='button-container'>
             <button onClick={changeDisplay}>SUBMIT</button>
