@@ -69,9 +69,12 @@ body{
 }
 
 .onclick {
-  background-color: hsl(25, 97%, 53%);
-  opacity: 1;
+  background-color: hsl(25, 97%, 53%);  
 }
+
+/* .onclick p{
+  opacity: 1;
+} */
 
 .star{
   color: hsl(25, 97%, 53%); 
@@ -91,6 +94,10 @@ body{
 
 .app-container > .normalView > .rating-container > .rating > p{
   opacity: 0.5;
+}
+
+.app-container > .normalView > .rating-container > .onclick p {
+  opacity: 1;
 }
 
 .app-container > .normalView > .heading{

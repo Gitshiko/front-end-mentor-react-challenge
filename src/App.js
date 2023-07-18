@@ -66,7 +66,7 @@ function App() {
           <div className='rating-container'>  
             { ratingArr.map((item, index) => { return (
    
-            <div key={index} onClick={(e) => changeState(e)} className= { 'circle rating' + ((index+1) === selectedRating ? ' onclick' : '')}>{index + 1}</div>
+            <div key={index} onClick={(e) => changeState(e)} className= { 'circle rating' + ((item) === selectedRating ? ' onclick' : '')}><p>{item}</p></div>
             )
             })
             }            
