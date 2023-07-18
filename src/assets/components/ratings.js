@@ -1,23 +1,33 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 
 function Ratings(props){  
-    const {ratingNumber} = props;     
-    // console.log(state);
+    let {ratingNumber, state, clickFunction} = props;
+
+    console.log(state);
   
-    const[clicked, setClicked] = useState(false);
-    function changeState(){
-        setClicked(!clicked);
-    }
-        
+    // const[clicked, setClicked] = useState(false);
+    // function changeState(){
+    //     setClicked(!clicked);       
+    // }
+   
+
+    // if (clicked === true) {
+    //     state = ratingNumber;
+    // } else {
+    //     state = '';
+    // }
+
+    console.log(state);
+          
     return(  
         <>
         {
-        clicked ? <div className='circle rating onclick' onClick={changeState}><p style={{opacity:'1'}}>{ratingNumber}</p></div>
+        state ? <div className='circle rating onclick' onClick={clickFunction}><p style={{opacity:'1'}}>{ratingNumber}</p></div>
         :
-        <div className='circle rating' onClick={changeState}><p>{ratingNumber}</p></div>
+        <div className='circle rating' onClick={clickFunction}><p>{ratingNumber}</p></div>
         }     
         </>     
     )   
 
 } 
-export default Ratings;
+//export default Ratings;

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import Ratings from './assets/components/ratings';
+//import Ratings from './assets/components/ratings';
 import Image from './assets/components/image';
 import { useState } from 'react';
 // import DisplayRating from './assets/components/displayRating';
@@ -13,26 +13,23 @@ function App() {
     setModalDisplay(true);  
   };
 
-  // const[clicked, setClicked] = useState(false);
-  // function changeBgState(){
-  //   setClicked(!clicked);    
-  // }
-  
-  const ratingArr = [];
-  for(let i = 0; i < 5 ; i++){
-    ratingArr[i] = {ratingNum: i + 1, bgState: false};
-  }
-  
-  const ratingComponent  = [];
-  // ratingArr.forEach((item)=>{
-  //   ratingComponent.push(<Ratings ratingNumber={item.ratingNum} state={clicked} clickFunction={changeBgState}/>)
-  // })
-  ratingArr.forEach((item)=>{
-    ratingComponent.push(<Ratings ratingNumber={item.ratingNum}/>)
-  })
-  
-  console.log(ratingArr);  
+  const [selectedRating,setSelectedRating] = useState('')
+  const ratingArr = [1, 2, 3, 4, 5];  
+ 
 
+  function changeState(e){
+    let buttons = document.querySelectorAll('.circle')
+    buttons.forEach((button) => {
+      if(button.classList.contains('onclick')){
+        button.classList.remove('onclick')
+      }
+    })
+    console.log(e.target.innerHTML);
+    e.target.classList.add('onclick');
+    setSelectedRating(e.target.innerHTML);
+  }
+
+  console.log(selectedRating); 
 
   return (
     <div className="App">
@@ -52,14 +49,12 @@ function App() {
             </p>
           </div>  
    
-          {/* <div className='rating-container'>
-            {ratingArr.map(function(rating){
-              return <Ratings ratingNumber= {rating.ratingNum} state={rating.bgState} clickFunction={changeBgState()} />
-            })}
-          </div>  */}
-
           <div className='rating-container'>  
-            {ratingComponent}            
+            { ratingArr.map((item, index) => { return (   
+            <div key={index} onClick={(e) => changeState(e)} className= { 'circle rating'}>{item}</div>
+            )
+            })
+            }            
           </div> 
           
           <div className='button-container'>
@@ -75,7 +70,7 @@ function App() {
           </div>
 
           <div className='capsule'>
-            <p>You selected 4 out of 5</p>
+            <p>You selected {selectedRating} out of 5</p>
           </div>
 
           <h1 className='thankuM'>Thank you!
@@ -86,7 +81,7 @@ function App() {
           </div>
 
         </div>
-        
+
       </div>
     </div>
   );
